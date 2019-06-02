@@ -46,10 +46,6 @@
   };
   typedef struct animal Animal;
 
-    Animal *NovoAnimal(){
-       return NULL;
-    }
-
 int main()
 {
     printf("===================================\n");
@@ -63,24 +59,101 @@ int main()
 
    ptr = fopen("zoo.data", "r");
 
-    int i, Chave;
+    int i=0, Chave;
     BTree* raiz, *Buscado;
     raiz = NovaBTree();
 
+Animal NovoAnimal[101];
 
-    char nome[30]; char pesq[30];
+ while(!feof(ptr)){
+
+    fscanf(ptr, "%[^,]s", &NovoAnimal[i].nome);
+
+    fseek(ptr, 1, SEEK_CUR);
+    fscanf(ptr, "%d[^,]", &NovoAnimal[i].cabelo);
+
+    fseek(ptr, 1, SEEK_CUR);
+    fscanf(ptr, "%d[^,]",&NovoAnimal[i].penas);
+
+    fseek(ptr, 1, SEEK_CUR);
+    fscanf(ptr, "%d[^,]", &NovoAnimal[i].ovos);
+
+    fseek(ptr, 1, SEEK_CUR);
+    fscanf(ptr, "%d[^,]", &NovoAnimal[i].leite);
+
+    fseek(ptr, 1, SEEK_CUR);
+    fscanf(ptr, "%d[^,]", &NovoAnimal[i].ave);
+
+    fseek(ptr, 1, SEEK_CUR);
+    fscanf(ptr, "%d[^,]", &NovoAnimal[i].aquatico);
+
+    fseek(ptr, 1, SEEK_CUR);
+    fscanf(ptr, "%d[^,]", &NovoAnimal[i].predador);
+
+    fseek(ptr, 1, SEEK_CUR);
+    fscanf(ptr, "%d[^,]", &NovoAnimal[i].dentado);
+
+    fseek(ptr, 1, SEEK_CUR);
+    fscanf(ptr, "%d[^,]", &NovoAnimal[i].espinha);
+
+    fseek(ptr, 1, SEEK_CUR);
+    fscanf(ptr, "%d[^,]", &NovoAnimal[i].respira);
+
+    fseek(ptr, 1, SEEK_CUR);
+    fscanf(ptr, "%d[^,]", &NovoAnimal[i].venenoso);
+
+    fseek(ptr, 1, SEEK_CUR);
+    fscanf(ptr, "%d[^,]", &NovoAnimal[i].barbatanas);
+
+    fseek(ptr, 1, SEEK_CUR);
+    fscanf(ptr, "%d[^,]", &NovoAnimal[i].pernas);
+
+    fseek(ptr, 1, SEEK_CUR);
+    fscanf(ptr, "%d[^,]", &NovoAnimal[i].rabo);
+
+    fseek(ptr, 1, SEEK_CUR);
+    fscanf(ptr, "%d[^,]", &NovoAnimal[i].domestico);
+
+    fseek(ptr, 1, SEEK_CUR);
+    fscanf(ptr, "%d[^,]", &NovoAnimal[i].catsize);
+
+    fseek(ptr, 1, SEEK_CUR);
+    fscanf(ptr, "%d[^,]", &NovoAnimal[i].tipo);
+
+    fseek(ptr, 1, SEEK_CUR);
+
+    printf("%s\t", NovoAnimal[i].nome);
+     printf("%d ", NovoAnimal[i].cabelo);
+      printf("%d ", NovoAnimal[i].penas);
+       printf("%d ", NovoAnimal[i].ovos);
+        printf("%d ", NovoAnimal[i].leite);
+         printf("%d ", NovoAnimal[i].ave);
+          printf("%d ", NovoAnimal[i].aquatico);
+           printf("%d ", NovoAnimal[i].predador);
+            printf("%d ", NovoAnimal[i].dentado);
+             printf("%d ", NovoAnimal[i].espinha);
+              printf("%d ", NovoAnimal[i].respira);
+               printf("%d ", NovoAnimal[i].venenoso);
+                printf("%d ", NovoAnimal[i].barbatanas);
+                printf("%d ", NovoAnimal[i].pernas);
+                printf("%d ", NovoAnimal[i].rabo);
+                printf("%d ", NovoAnimal[i].domestico);
+                printf("%d ", NovoAnimal[i].catsize);
+                printf("%d ", NovoAnimal[i].tipo);
+
+i++;
+  }
 
 
-    while(!feof(ptr)){
+
+
+//}
+
+   /* for (i=0; i<feof(ptr); i++){
        fscanf(ptr, "%[^,]s", &nome);
-       nome[i] = NovoAnimal();
-
-    }
-
-
-
-
-
+       Animal *nome[i];
+       fscanf(ptr, "%[^,]d", &nome[i]->nome);
+    }*/
 
     /*for(i = 0; i < MAXITENS; i++)
     {
