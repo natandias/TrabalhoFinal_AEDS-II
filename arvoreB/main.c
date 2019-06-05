@@ -97,8 +97,8 @@ int main()
     while(!feof(ptr))
     {
         fscanf(ptr, "%[^,]s", &NovoAnimal[i].nome);
-      //printf("%s", NovoAnimal[i].nome);
-       InsereBTree(raiz, NovoAnimal[i].nome);
+        //printf("%s", NovoAnimal[i].nome);
+        InsereBTree(raiz, NovoAnimal[i].nome);
 
         fseek(ptr, 1, SEEK_CUR);
         fscanf(ptr, "%d", &NovoAnimal[i].cabelo);
@@ -157,7 +157,9 @@ int main()
     i++;
  //printf("%d ", i);
     };
-//printf("%s", NovoAnimal[1].nome);
+
+
+//printf("%s", NovoAnimal[100].nome);
 /*
     int opcao;
     printf("Opcoes: \n");
@@ -167,18 +169,10 @@ int main()
     if (opcao == 1) ListarAnimais(NovoAnimal, i);*/
 
 //Imprime(raiz);
-
-
-
-
-
-
-
 /*
-       printf(" %d", i);
             printf("Altura = %d\n\n", Altura(raiz));
-            printf("MenorChave = %d\n\n", MenorChave(raiz));
-
+            printf("MenorChave = %d\n\n", MenorChave(raiz));*/
+/*
             printf("Chave para buscar: ");
             scanf("%d", &Chave);
             Buscado = BuscaBTree(raiz, Chave);
@@ -193,8 +187,8 @@ int main()
                 printf("Chave Encontrada!!\n");
                 printf("Em %d\n", Buscado->Chaves[0]);
             }
+*/
 
-    */
 
     return 0;
 }
