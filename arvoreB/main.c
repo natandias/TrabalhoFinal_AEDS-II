@@ -53,9 +53,8 @@ void ListarAnimais(Animal *animal, int tam)
 
     for (i=0; i<tam; i++)
     {
-
         printf("%s ", animal[i].nome);
-        printf("%d ", animal[i].cabelo);
+       printf("%d ", animal[i].cabelo);
         printf("%d ", animal[i].penas);
         printf("%d ", animal[i].ovos);
         printf("%d ", animal[i].leite);
@@ -97,8 +96,9 @@ int main()
 
     while(!feof(ptr))
     {
-
         fscanf(ptr, "%[^,]s", &NovoAnimal[i].nome);
+      //printf("%s", NovoAnimal[i].nome);
+       InsereBTree(raiz, NovoAnimal[i].nome);
 
         fseek(ptr, 1, SEEK_CUR);
         fscanf(ptr, "%d", &NovoAnimal[i].cabelo);
@@ -151,20 +151,30 @@ int main()
         fseek(ptr, 1, SEEK_CUR);
         fscanf(ptr, "%d", &NovoAnimal[i].tipo);
 
+
         if (feof(ptr))
             break;
-        i++;
+    i++;
+ //printf("%d ", i);
     };
-    ListarAnimais(NovoAnimal, i);
+//printf("%s", NovoAnimal[1].nome);
+/*
+    int opcao;
+    printf("Opcoes: \n");
+    printf("1 - Listar\n");
 
-    printf("\n\n fdsafasdf");
+    scanf("%d", &opcao);
+    if (opcao == 1) ListarAnimais(NovoAnimal, i);*/
+
+//Imprime(raiz);
 
 
 
 
-    /*
 
-            Imprime(raiz);
+
+
+/*
        printf(" %d", i);
             printf("Altura = %d\n\n", Altura(raiz));
             printf("MenorChave = %d\n\n", MenorChave(raiz));

@@ -1,4 +1,5 @@
 #include "BTree.h"
+#include <string.h>
 
 BTree* NovoNo(BTree* Pai)
 {
@@ -14,18 +15,25 @@ BTree* NovaBTree()
     return NovoNo(NULL);
 }
 
-void InserenoNo(BTree* No, int Chave, BTree* NoFilho)
+void InserenoNo(BTree* No, char  Chave[], BTree* NoFilho)
 {
     int i;
     for(i = No->TotalChaves; i > 0; i--)
     {
-        if(No->Chaves[i-1] > Chave) {
-            No->Chaves[i] = No->Chaves[i-1];
+       // printf(" work: %d", No->TotalChaves);
+     //printf(" %d", No->TotalChaves);
+     printf("\n %s", No->Chaves[5]);
+
+        //strcmp < 0: string 1 menor que string 2
+        if(strcmp(No->Chaves[i], Chave)<0) {
+
+            strcpy(No->Chaves[i], No->Chaves[i-1]);
+
             if(!No->EhFolha) No->Filhos[i+1] = No->Filhos[i];
         }
         else break;
     }
-    No->Chaves[i] = Chave;
+         strcpy(No->Chaves[i], Chave);
     if(!No->EhFolha) No->Filhos[i+1] = NoFilho;
     No->TotalChaves++;
 }
@@ -39,7 +47,7 @@ BTree* DivideNo(BTree* No)
     // transfere metade para novo no
     for(i = mediana+1, j = 0; i < No->TotalChaves; i++, j++)
     {
-        Novo->Chaves[j] = No->Chaves[i];
+        strcpy(Novo->Chaves[j], No->Chaves[i]);
         Novo->Filhos[j] = No->Filhos[i];
         if(!Novo->EhFolha) Novo->Filhos[j]->Pai = Novo;
     }
@@ -51,26 +59,14 @@ BTree* DivideNo(BTree* No)
     {
         No->Pai = NovoNo(NULL);
         No->Pai->EhFolha = 0;
-        No->Pai->Chaves[0] = No->Chaves[mediana];
+       strcpy(No->Pai->Chaves[0], No->Chaves[mediana]);
         No->Pai->Filhos[0] = No;
         No->Pai->Filhos[1] = Novo;
         No->Pai->TotalChaves++;
     }
     else
     {
-        /*for(i = No->Pai->TotalChaves; i > 0; i--)
-        {
-            if(No->Pai->Chaves[i-1] > No->Chaves[mediana])
-            {
-                No->Pai->Chaves[i] = No->Pai->Chaves[i-1];
-                No->Pai->Filhos[i+1] = No->Pai->Filhos[i];
-            }
-            else break;
-        }
-        No->Pai->Chaves[i] = No->Chaves[mediana];
-        No->Pai->Filhos[i+1] = Novo;
-        No->Pai->TotalChaves++;*/
-        InserenoNo(No->Pai, No->Chaves[mediana], Novo);
+       InserenoNo(No->Pai, No->Chaves[mediana], Novo);
     }
 
     //No->Pai = No->Pai;
@@ -83,15 +79,15 @@ BTree* DivideNo(BTree* No)
     return No->Pai;
 }
 
-BTree* InsereBTree(BTree* No, int Chave)
+BTree* InsereBTree(BTree* No, char  Chave[])
 {
     int i;
     if(No->EhFolha)
     {
-        //if(No->TotalChaves < ORDEM)
-        //{
+        if(No->TotalChaves < ORDEM)
+        {
             InserenoNo(No, Chave, NULL);
-        //}
+        }
         if(No->TotalChaves >= ORDEM)
         {
             return DivideNo(No);
@@ -103,7 +99,7 @@ BTree* InsereBTree(BTree* No, int Chave)
         int Tot = No->TotalChaves;
         for(i = 0; i < Tot; i++)
         {
-            if(No->Chaves[i] > Chave)
+            if(strcmp(No->Chaves[i], Chave)<0)
             {
                 InsereBTree(No->Filhos[i], Chave);
                 break;
@@ -119,7 +115,7 @@ BTree* InsereBTree(BTree* No, int Chave)
 }
 
 
-BTree* BuscaBTree(BTree* No, int Chave){
+BTree* BuscaBTree(BTree* No, char Chave[]){
     int i;
     int Tot = No->TotalChaves;
     //printf("*");
@@ -150,7 +146,7 @@ void Imprime(BTree *raiz){
     //printf("\nraiz->TotalChaves = %d\n", raiz->TotalChaves);
     for(i = 0; i < nivel; i++) printf("\t");
     for(i = 0; i < raiz->TotalChaves; i++){
-        printf("%d ", raiz->Chaves[i]);
+        printf("%s ", raiz->Chaves[i]);
     }
     printf("\n");
     contpag++;
@@ -176,3 +172,4 @@ int MenorChave(BTree *raiz){
     else
     return MenorChave(raiz->Filhos[0]);
 }
+

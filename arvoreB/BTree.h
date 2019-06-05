@@ -8,14 +8,14 @@
 typedef struct btree{
     int TotalChaves;
     int EhFolha;
-    int Chaves[ORDEM];
+    char Chaves[ORDEM][20];
     struct btree* Filhos[ORDEM+1];
     struct btree* Pai;
 } BTree;
 
 BTree* NovaBTree();
-BTree* Insere(BTree* No, int Chave);
-BTree* BuscaBTree(BTree* No, int Chave);
+BTree* Insere(BTree* No, char Chave[]);
+BTree* BuscaBTree(BTree* No, char Chave[]);
 void Imprime(BTree *raiz);
 int Altura(BTree *raiz);
 int MenorChave(BTree *raiz);
