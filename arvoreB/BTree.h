@@ -2,20 +2,42 @@
 #define BTREE_H_INCLUDED
 #include <stdio.h>
 #include <stdlib.h>
-
 #define ORDEM 5
+
+struct animal
+{
+    char nome[20];
+    int cabelo;
+    int penas;
+    int ovos;
+    int leite;
+    int ave;
+    int aquatico;
+    int predador;
+    int dentado;
+    int espinha;
+    int respira;
+    int venenoso;
+    int barbatanas;
+    int pernas;
+    int rabo;
+    int domestico;
+    int catsize;
+    int tipo;
+};
+typedef struct animal Animal;
 
 typedef struct btree{
     int TotalChaves;
     int EhFolha;
-    char Chaves[ORDEM][20];
+    Animal Chaves[ORDEM];
     struct btree* Filhos[ORDEM+1];
     struct btree* Pai;
 } BTree;
 
 BTree* NovaBTree();
-BTree* Insere(BTree* No, char Chave[]);
-BTree* BuscaBTree(BTree* No, char Chave[]);
+BTree* Insere(BTree* No, Animal Chave);
+BTree* BuscaBTree(BTree* No, Animal Chave, int TotalChaves);
 void Imprime(BTree *raiz);
 int Altura(BTree *raiz);
 int MenorChave(BTree *raiz);

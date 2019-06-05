@@ -24,29 +24,6 @@
   18. type		Numeric (integer values in range [1,7])
   */
 
-struct animal
-{
-    char nome[20];
-    int cabelo;
-    int penas;
-    int ovos;
-    int leite;
-    int ave;
-    int aquatico;
-    int predador;
-    int dentado;
-    int espinha;
-    int respira;
-    int venenoso;
-    int barbatanas;
-    int pernas;
-    int rabo;
-    int domestico;
-    int catsize;
-    int tipo;
-};
-typedef struct animal Animal;
-
 void ListarAnimais(Animal *animal, int tam)
 {
     int i=0;
@@ -74,6 +51,8 @@ void ListarAnimais(Animal *animal, int tam)
     }
 }
 
+
+
 int main()
 {
     printf("===================================\n");
@@ -98,7 +77,7 @@ int main()
     {
         fscanf(ptr, "%[^,]s", &NovoAnimal[i].nome);
         //printf("%s", NovoAnimal[i].nome);
-        InsereBTree(raiz, NovoAnimal[i].nome);
+
 
         fseek(ptr, 1, SEEK_CUR);
         fscanf(ptr, "%d", &NovoAnimal[i].cabelo);
@@ -154,10 +133,12 @@ int main()
 
         if (feof(ptr))
             break;
+
+   InsereBTree(raiz, NovoAnimal[i], i);
     i++;
  //printf("%d ", i);
     };
-
+Imprime(raiz);
 
 //printf("%s", NovoAnimal[100].nome);
 /*
@@ -168,10 +149,10 @@ int main()
     scanf("%d", &opcao);
     if (opcao == 1) ListarAnimais(NovoAnimal, i);*/
 
-//Imprime(raiz);
+
 /*
             printf("Altura = %d\n\n", Altura(raiz));
-            printf("MenorChave = %d\n\n", MenorChave(raiz));*/
+            printf("MenorChave = %s\n\n", MenorChave(raiz));*/
 /*
             printf("Chave para buscar: ");
             scanf("%d", &Chave);
