@@ -37,8 +37,7 @@ typedef struct btree{
 
 BTree* NovaBTree();
 BTree* Insere(BTree* No, Animal Chave);
-BTree* BuscaBTree(BTree* No, Animal Chave, int TotalChaves);
+BTree* BuscaBTree(BTree* No, char Chave[]);
 void Imprime(BTree *raiz);
-int Altura(BTree *raiz);
-int MenorChave(BTree *raiz);
+
 #endif // BTREE_H_INCLUDED
