@@ -5,116 +5,11 @@
 #include <locale.h>
 #define MAXITENS 20
 
-void ListarAnimais(Animal *animal, int tam)
-{
-    int i=0;
-
-    for (i=0; i<tam; i++)
-    {
-        printf("\nNome do animal: %s", animal[i].nome);
-        printf("\nPossui cabelo: ");if  (animal[i].cabelo==0) printf("Não "); else printf("Sim ");
-        printf("\nPossui penas: ");if  (animal[i].penas==0) printf("Não "); else printf("Sim ");
-       printf("\nBota ovos: ");if  (animal[i].ovos==0) printf("Não "); else printf("Sim ");
-        printf("\nProduz leite: ");if  (animal[i].leite==0) printf("Não "); else printf("Sim ");
-        printf("\nÉ uma ave: ");if  (animal[i].ave==0) printf("Não "); else printf("Sim ");
-        printf("\nÉ aquático: ");if  (animal[i].aquatico==0) printf("Não "); else printf("Sim ");
-        printf("\nÉ predador: ");if  (animal[i].predador==0) printf("Não "); else printf("Sim ");
-        printf("\nÉ dentado: ");if  (animal[i].dentado==0) printf("Não "); else printf("Sim ");
-        printf("\nPossui espinha: ");if  (animal[i].espinha==0) printf("Não "); else printf("Sim ");
-        printf("\nRespira: ");if  (animal[i].respira==0) printf("Não "); else printf("Sim ");
-        printf("\nÉ venenoso: ");if  (animal[i].venenoso==0) printf("Não "); else printf("Sim ");
-        printf("\nPossui barbatanas: ");if  (animal[i].barbatanas==0) printf("Não "); else printf("Sim ");
-        printf("\nQuantas pernas possui: %d ", animal[i].pernas);
-        printf("\nPossui rabo: ");if  (animal[i].rabo==0) printf("Não "); else printf("Sim ");
-        printf("\nÉ doméstico: ");if  (animal[i].domestico==0) printf("Não "); else printf("Sim ");
-        printf("\nÉ de tamanho comparável a um gato: ");if  (animal[i].catsize==0) printf("Não "); else printf("Sim ");
-        printf("\nClasse do animal: ");
-        switch (animal[i].tipo){
-        case 1:
-            printf("Mamífero");
-            break;
-        case 2:
-            printf("Ave");
-            break;
-        case 3:
-            printf("Réptil");
-            break;
-        case 4:
-            printf("Peixe");
-            break;
-        case 5:
-            printf("Anfíbio");
-            break;
-        case 6:
-            printf("Inseto");
-            break;
-        case 7:
-            printf("Artrópodes");
-            break;
-        }
-
-        printf("\n");
-    }
-}
-
-int Pesquisa (Animal *chave,char key[]){
-    int i, achou=0;
-    for  (i=0; i<101; i++){
-        if (strcmp(chave[i].nome, key)==0)
-        {
-        achou = 1;
-        printf("Animal encontrado\n");
-        printf("\nNome do animal: %s", chave[i].nome);
-        printf("\nPossui cabelo: ");if  (chave[i].cabelo==0) printf("Não "); else printf("Sim ");
-        printf("\nPossui penas: ");if  (chave[i].penas==0) printf("Não "); else printf("Sim ");
-        printf("\nBota ovos: ");if  (chave[i].ovos==0) printf("Não "); else printf("Sim ");
-        printf("\nProduz leite: ");if  (chave[i].leite==0) printf("Não "); else printf("Sim ");
-        printf("\nÉ uma ave: ");if  (chave[i].ave==0) printf("Não "); else printf("Sim ");
-        printf("\nÉ aquático: ");if  (chave[i].aquatico==0) printf("Não "); else printf("Sim ");
-        printf("\nÉ predador: ");if  (chave[i].predador==0) printf("Não "); else printf("Sim ");
-        printf("\nÉ dentado: ");if  (chave[i].dentado==0) printf("Não "); else printf("Sim ");
-        printf("\nPossui espinha: ");if  (chave[i].espinha==0) printf("Não "); else printf("Sim ");
-        printf("\nRespira: ");if  (chave[i].respira==0) printf("Não "); else printf("Sim ");
-        printf("\nÉ venenoso: ");if  (chave[i].venenoso==0) printf("Não "); else printf("Sim ");
-        printf("\nPossui barbatanas: ");if  (chave[i].barbatanas==0) printf("Não "); else printf("Sim ");
-        printf("\nQuantas pernas possui: %d ", chave[i].pernas);
-        printf("\nPossui rabo: ");if  (chave[i].rabo==0) printf("Não "); else printf("Sim ");
-        printf("\nÉ doméstico: ");if  (chave[i].domestico==0) printf("Não "); else printf("Sim ");
-        printf("\nÉ de tamanho comparável a um gato: ");if  (chave[i].catsize==0) printf("Não "); else printf("Sim ");
-        printf("\nClasse do animal: ");
-        switch (chave[i].tipo){
-        case 1:
-            printf("Mamífero");
-            break;
-        case 2:
-            printf("Ave");
-            break;
-        case 3:
-            printf("Réptil");
-            break;
-        case 4:
-            printf("Peixe");
-            break;
-        case 5:
-            printf("Anfíbio");
-            break;
-        case 6:
-            printf("Inseto");
-            break;
-        case 7:
-            printf("Artrópodes");
-            break;
-        }
-
-    }
-  }return achou;
-}
-
 int main()
 {
     setlocale(LC_ALL, "");
-    printf("===================================\n");
-    printf("===========ZOO DATABASE============\n\n");
+    printf("=============================================\n");
+    printf("================ZOO DATABASE=================\n\n");
 
     FILE* ptr;
     if (fopen("zoo.data", "rb")==NULL)
@@ -125,7 +20,7 @@ int main()
 
     ptr = fopen("zoo.data", "rb");
 
-    int i=0,k, pula, Chave;
+    int i=0;
     BTree*raiz, *Buscado;
     raiz = NovaBTree();
 
@@ -191,40 +86,43 @@ int main()
         if (feof(ptr))
             break;
 
-   //InsereBTree(raiz, NovoAnimal[i]);
-    i++;
+        raiz = InsereBTree(raiz, NovoAnimal[i]);
+        i++;
     };
 
-
-// Imprime(raiz);
-
 //printf("%s", NovoAnimal[100].nome);
-    int opcao, p;
-do {
-    printf("\n\nOpcoes: \n");
-    printf("1 - Listar\n");
-    printf("2 - Pesquisar por animal\n");
-    printf("3 - Sair\n");
+    int op, p;
+    char Chave[20];
+    while (op!=4)
+    {
+        printf("\nOpcoes: \n");
+        printf("1 - Listar\n");
+        printf("2 - Pesquisar por animal (sequencial)\n");
+        printf("3 - Pesquisar por animal (otimizado)\n");//funcionando somente para algumas chaves
+        printf("4 - Sair\n");
 
-    scanf("%d", &opcao);
-    if (opcao == 1)
-        ListarAnimais(NovoAnimal, i);
-    if (opcao == 2){
-        char key[20];
-        printf("Digite o nome do animal: ");
-        scanf("%s", &key);
+        printf("\nOpção desejada: ");
+        scanf("%d", &op);
 
-        p = Pesquisa(NovoAnimal, key);
-        if (p!=1) printf("Animal não encontrado!!! \n");
+        //system("cls");
+        if (op == 1)
+            ListarAnimais(NovoAnimal, i);
 
-    }
-    if (opcao == 3)
-        return 0;
-}while (opcao != 3);
+        if (op == 2)
+        {
+            char key[20];
+            printf("Digite o nome do animal: ");
+            scanf("%s", &key);
 
-/*
-            printf("Chave para buscar: ");
-            scanf("%s ", &Chave);
+            p = Pesquisa(NovoAnimal, key);
+            if (p!=1)
+                printf("\nAnimal não encontrado!!! \n");
+        }
+
+        if (op == 3)
+        {
+            printf("Digite o nome do animal: ");
+            scanf("%s", Chave);
             Buscado = BuscaBTree(raiz, Chave);
             printf("\n");
 
@@ -235,10 +133,11 @@ do {
             else
             {
                 printf("Chave Encontrada!!\n");
-                printf("Em %d\n", Buscado->Chaves[0]);
             }
-
-*/
+        }
+        if (op == 4)
+            return 0;
+    };
 
     return 0;
 }

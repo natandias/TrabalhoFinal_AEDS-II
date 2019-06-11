@@ -27,7 +27,8 @@ struct animal
 };
 typedef struct animal Animal;
 
-typedef struct btree{
+typedef struct btree
+{
     int TotalChaves;
     int EhFolha;
     Animal Chaves[ORDEM];
@@ -39,5 +40,8 @@ BTree* NovaBTree();
 BTree* Insere(BTree* No, Animal Chave);
 BTree* BuscaBTree(BTree* No, char Chave[]);
 void Imprime(BTree *raiz);
+
+void ListarAnimais(Animal *animal, int tam);
+int Pesquisa (Animal *chave,char key[]);
 
 #endif // BTREE_H_INCLUDED
